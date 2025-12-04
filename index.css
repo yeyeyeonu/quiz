@@ -20,7 +20,13 @@ body {
   padding: 40px 25px;
   border-radius: 20px;
   position: relative;
+
+  min-height: 100vh;   /* ⭐ 화면 꽉 채우기 */
+  display: flex;       
+  flex-direction: column;
+  justify-content: center;  /* ⭐ 세로 중앙 배치 */
 }
+
 
 /* 상단 물음표 */
 .emoji {
