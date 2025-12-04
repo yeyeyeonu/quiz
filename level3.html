@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>남북 단어 퀴즈</title>
+  <link rel="stylesheet" href="question.css" />
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+  const quizData = [
+    { word: "빛고리", options: ["카메라 렌즈", "무지개"], answer: "무지개" },
+    { word: "지팡바지", options: ["치마바지", "청바지"], answer: "청바지" },
+    { word: "서쪽점", options: ["서점", "편의점"], answer: "서점" },
+    { word: "늦꽃", options: ["만화", "졸업식"], answer: "만화" },
+    { word: "경국", options: ["서울", "경주"], answer: "서울" }
+  ];
+
+  let current = 0;
+  let score = 0;
+
+  const app = document.getElementById("app");
+
+  function renderQuiz() {
+    if (current >= quizData.length) {
+      return renderResult();
+    }
+
+    const q = quizData[current];
+
+    app.innerHTML = `
+      <div class="quiz-page">
+        <div class="progress">
+          ${quizData.map((_, i) => `<div class="dot ${i <= current ? "activeDot" : ""}"></div>`).join("")}
+        </div>
+
+        <div class="title">북한말, 남한말로 맞혀볼까요? 🤔</div>
+
+        <div class="questionBox">
+          <div class="qLabel">Q${current + 1}.</div>
+          <div class="word">${q.word}</div>
+          <div class="desc">이 단어… 무슨 뜻일까요?</div>
+
+          ${q.options.map(opt => `
+            <button class="btn" onclick="checkAnswer('${opt}')">${opt}</button>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function checkAnswer(selected) {
+    if (selected === quizData[current].answer) score += 20;
+    current++;
+    renderQuiz();
+  }
+
+  function renderResult() {
+    app.innerHTML = `
+      <div class="quiz-page result">
+        <div class="result-title">나의 점수는</div>
+        <div class="score-box">${score}점</div>
+        <div class="comment">👀 언어의 차이를 이해한 만큼,<br> 마음의 거리도 가까워집니다</div>
+        <button class="restart" onclick="restart()">처음으로</button>
+      </div>
+    `;
+  }
+
+  function restart() {
+    current = 0;
+    score = 0;
+    renderQuiz();
+  }
+
+  renderQuiz();
+</script>
+
+</body>
+</html>
