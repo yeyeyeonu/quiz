@@ -1,164 +1,133 @@
-/* 공통 초기화 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
 }
 
 body {
-  background: #D0EDFD;
-  font-family: 'Apple SD Gothic Neo', sans-serif;
-  display: flex;
-  justify-content: center;   /* 화면 가운데로 */
+  background:#D0EDFD;
+  font-family:'Apple SD Gothic Neo', sans-serif;
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  /* iPhone safe area 대응 */
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
-/* 문제/결과 공통 컨테이너 */
+/* ⭐ 여기서 width를 fixed px → 반응형으로 변경 */
 .quiz-page {
-  width: 100%;
-  max-width: 430px;          /* 아이폰 기준 너비 제한 */
-  min-height: 100vh;         /* 화면 꽉 채우기 */
-  padding: 40px 20px;
-  background: #D0EDFD;
+  width:100%;
+  max-width:430px; 
+  min-height:90vh; 
+  padding:30px 20px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;       /* ⭐ 가로 중앙 정렬 */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
-/* 상단 진행 점 */
+/* 상단 점 */
 .progress {
-  margin: 20px auto 30px;
-  display: flex;
-  gap: 8px;
-  justify-content: center;
+  margin:20px auto 30px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
 }
 
 .dot {
-  width: 20px;
-  height: 20px;
-  background: #D9D9D9;
-  border-radius: 50%;
+  width:20px;
+  height:20px;
+  background:#ccc;
+  border-radius:50%;
 }
 
 .activeDot {
-  background: #75AB48;
+  background:#75AB48;
 }
 
 /* 제목 */
 .title {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 15px;
+  text-align:center;
+  font-size:1.8rem;
+  font-weight:600;
+  margin-bottom:15px;
 }
 
 /* 문제 박스 */
 .questionBox {
-  width: 90%;
-  max-width: 350px;          /* 하얀 박스 실제 크기 */
-  background: #ffffff;
-  border-radius: 25px;
-  margin: 20px auto 0;
-  padding: 30px 20px;
-  text-align: center;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.qLabel {
-  font-size: 1.5rem;
-  font-weight: bold;
+  width:100%;
+  background:white;
+  border-radius:20px;
+  padding:30px 15px;
+  text-align:center;
+  box-shadow:0px 4px 10px rgba(0,0,0,0.1);
 }
 
 .word {
-  font-size: 2.4rem;
-  font-weight: bold;
-  margin-top: 10px;
+  font-size:2.2rem;
+  font-weight:bold;
 }
 
-.desc {
-  margin-top: 15px;
-  font-size: 1.2rem;
-}
-
-/* 보기 버튼 */
 .btn {
-  width: 100%;
-  max-width: 300px;
-  padding: 16px;
-  font-size: 1.3rem;
-  border: none;
-  border-radius: 40px;
-  background: #e9e9e9;
-  margin: 18px auto 0;
-  cursor: pointer;
-  display: block;
-}
-
-.btn:hover {
-  background: #dedede;
-}
-
-/* 결과 화면 */
-.result-title {
-  margin-top: 40px;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.score-box {
-  width: 70%;
-  max-width: 280px;
-  height: 90px;
-  background: white;
-  border-radius: 30px;
-  margin: 30px auto;
-  font-size: 2.5rem;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.comment {
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.7rem;
-}
-
-/* 처음으로 버튼 */
-.restart {
-  width: 75%;
-  max-width: 330px;
-  padding: 18px;
-  margin: 40px auto 0;
-  color: white;
-  font-size: 1.4rem;
-  background: #75AB48;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  display: block;
-}
-
-.restart:hover {
-  background: #5e8c39;
+  width:100%;
+  max-width:300px;
+  padding:15px;
+  font-size:1.3rem;
+  border:none;
+  border-radius:30px;
+  margin-top:20px;
+  background:#E9E9E9;
 }
 
 /* 정답/오답 효과 */
 .correct {
-  background: #B7EFC1;
-  border: 2px solid #4CAF50;
-  transition: 0.3s;
+  background:#B7EFC1;
+  border:2px solid #4CAF50;
 }
 
 .wrong {
-  background: #FFBDBD;
-  border: 5px solid #D9534F;
-  transition: 0.3s;
+  background:#FFBDBD;
+  border:2px solid #D9534F;
 }
 
 .btn.disabled {
-  pointer-events: none;
-  opacity: 0.5;
+  opacity:0.5;
+  pointer-events:none;
+}
+
+/* 결과 페이지 */
+.result-title {
+  font-size:2rem;
+  margin-top:30px;
+}
+
+.score-box {
+  width:70%;
+  max-width:280px;
+  height:80px;
+  background:#fff;
+  border-radius:20px;
+  margin:25px auto;
+  font-size:2.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.restart {
+  width:80%;
+  max-width:300px;
+  background:#75AB48;
+  padding:15px;
+  color:white;
+  border:none;
+  border-radius:30px;
+  font-size:1.4rem;
+  margin-top:30px;
 }
