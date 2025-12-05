@@ -1,16 +1,26 @@
+
 body {
-  margin: 0;
   background: #D0EDFD;
   font-family: 'Apple SD Gothic Neo', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
 }
+
 
 .quiz-page {
   width: 100%;
   max-width: 430px;
-  margin: auto;
-  padding: 25px;
-  box-sizing: border-box;
+  min-height: 100vh;
+  background: #D0EDFD;
+  padding: 40px 20px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;   /* ⭐ 가운데 정확히 배치 */
 }
+
 
 .progress {
   margin: 40px auto;
@@ -38,7 +48,8 @@ body {
 }
 
 .questionBox {
-  width: 100%;
+  width: 90%;       /* ⭐ 화면에 맞게 반응형 */
+  max-width: 350px; /* ⭐ 크기 제한 */
   background: #ffffff;
   border-radius: 25px;
   margin: 35px auto;
@@ -46,6 +57,7 @@ body {
   text-align: center;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .qLabel {
   font-size: 1.5rem;
@@ -124,7 +136,7 @@ body {
 
 .correct {
   background: #B7EFC1;
-  border: px solid #4CAF50;
+  border: 2px solid #4CAF50;
   transition: 0.3s;
 }
 
