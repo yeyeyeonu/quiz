@@ -121,3 +121,21 @@ body {
 .restart:hover {
   background: #5e8c39;
 }
+
+.correct {
+  background: #B7EFC1;
+  border: px solid #4CAF50;
+  transition: 0.3s;
+}
+
+.wrong {
+  background: #FFBDBD;
+  border: 5px solid #D9534F;
+  transition: 0.3s;
+}
+
+/* 클릭 후 다른 버튼 비활성화 효과(optional) */
+.btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

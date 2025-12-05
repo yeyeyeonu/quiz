@@ -45,17 +45,37 @@
           <div class="desc">이 단어… 무슨 뜻일까요?</div>
 
           ${q.options.map(opt => `
-            <button class="btn" onclick="checkAnswer('${opt}')">${opt}</button>
+            <button class="btn" onclick="checkAnswer(this, '${opt}')">${opt}</button>
           `).join("")}
         </div>
       </div>
     `;
   }
 
-  function checkAnswer(selected) {
-    if (selected === quizData[current].answer) score += 20;
-    current++;
-    renderQuiz();
+  function checkAnswer(selectedBtn, selected) {
+    const buttons = document.querySelectorAll(".btn");
+
+    if (selected === quizData[current].answer) {
+      selectedBtn.classList.add("correct");
+      score += 20;
+    } else {
+      selectedBtn.classList.add("wrong");
+
+      // 정답 버튼 표시
+      buttons.forEach(btn => {
+        if (btn.innerText === quizData[current].answer) {
+          btn.classList.add("correct");
+        }
+      });
+    }
+
+    // 잠시 동안 버튼 비활성화
+    buttons.forEach(btn => btn.disabled = true);
+
+    setTimeout(() => {
+      current++;
+      renderQuiz();
+    }, 1000);
   }
 
   function renderResult() {
