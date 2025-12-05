@@ -5,36 +5,40 @@ html, body {
   height:100%;
 }
 
+/* ⭐ 화면 전체를 flex 기준으로 중앙 */
 body {
   background:#D0EDFD;
   font-family:'Apple SD Gothic Neo', sans-serif;
-  
+
   display:flex;
   justify-content:center;
   align-items:center;
 
-  /* iPhone safe area 대응 */
+  /* iPhone notch 대응 */
   padding-bottom: env(safe-area-inset-bottom);
   padding-top: env(safe-area-inset-top);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
 
-/* ⭐ 여기서 width를 fixed px → 반응형으로 변경 */
+/* ⭐ 반응형 & 중앙 배치 핵심 */
 .quiz-page {
   width:100%;
-  max-width:430px; 
-  min-height:90vh; 
+  max-width:430px;
+  min-height:90vh;
+
   padding:30px 20px;
 
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:flex-start; /* ← 👁️🤌 수정 포인트 */
+
+  gap:20px; /* 요소 간 간격 균형 */
 }
 
 /* 상단 점 */
 .progress {
-  margin:20px auto 30px;
   display:flex;
   gap:10px;
   justify-content:center;
@@ -56,7 +60,7 @@ body {
   text-align:center;
   font-size:1.8rem;
   font-weight:600;
-  margin-bottom:15px;
+  margin-top:10px;
 }
 
 /* 문제 박스 */
@@ -74,6 +78,7 @@ body {
   font-weight:bold;
 }
 
+/* 선택 버튼 */
 .btn {
   width:100%;
   max-width:300px;
@@ -83,6 +88,7 @@ body {
   border-radius:30px;
   margin-top:20px;
   background:#E9E9E9;
+  cursor:pointer;
 }
 
 /* 정답/오답 효과 */
@@ -104,6 +110,7 @@ body {
 /* 결과 페이지 */
 .result-title {
   font-size:2rem;
+  text-align:center;
   margin-top:30px;
 }
 
@@ -120,6 +127,7 @@ body {
   justify-content:center;
 }
 
+/* 재시작 버튼 */
 .restart {
   width:80%;
   max-width:300px;
@@ -130,4 +138,8 @@ body {
   border-radius:30px;
   font-size:1.4rem;
   margin-top:30px;
+  cursor:pointer;
+}
+.restart:hover {
+  background:#5e8c39;
 }
